@@ -45,11 +45,11 @@ As long as apple-ibridge driver is installed and loaded, uvcvideo will hook to I
 
 - WiFi<br>
 This Model is using brcmfmac as the kernel driver and it load automatically.
-The issue is in the Registration Domain and the incompatibility with wpa_supplicant apps.
+The issue is in the Registration Domain and the incompatibility with wpa_supplicant apps.<br>
 Try to use iwd instead of wpa_supplicant.
-If you are using NetworkManager, try to hook to iwd as the backline.
+If you are using NetworkManager, try to hook iwd as the backline.
 Install the package wireless-db and set the Region to your country.
-The Wifi is only at 2.4G working, but it is sufficient.
+The Wifi is working only at 2.4G, but it is sufficient.
 Check Arch Wiki https://wiki.archlinux.org/title/Network_configuration/Wireless and read throughly.
 
 - Suspend<br>
