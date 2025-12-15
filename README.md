@@ -36,10 +36,11 @@ Install the patch for Cirrus 8409 driver from https://github.com/davidjo/snd_hda
 Follow the instruction in there.
 
 - Facetime HD Camera and Touch Bar<br>
-Macbook Pro late 2016 is using T1 Chip and recognized by the autodetect kernel as Apple-IBridge. But there are no kernel driver for IBridge to hook up with FacetimeHD Camera and Touch Bar. To do that a custom kernel driver needs to be installed, compiled and hooked.
+Macbook Pro late 2016 is using T1 Chip and recognized by the autodetect kernel as Apple-IBridge. But there is non kernel driver for IBridge to hook up with FacetimeHD Camera and Touch Bar. To do that a custom kernel driver needs to be installed, compiled and hooked.<br>
 Install the kernel driver from https://github.com/parport0/mbp-t1-touchbar-driver/<br>
-Follow the instruction there and make it a systemd service for apple-ibridge.service.
-FacetimeHD is using uvcvideo kernel driver, which hooks to apple-ibridge.
+There will be 3 drivers needed apple-ibridge (virtual usb to manage facetimehd and touch bar), apple_ib_tb for touch bar and apple_ib_als for the display.<br>
+Follow the instruction there and make it a systemd service for apple-ibridge.service.<br>
+FacetimeHD is using uvcvideo kernel driver, which hooks to apple-ibridge.<br>
 As long as apple-ibridge driver is installed and loaded, uvcvideo will hook to IBridge automatically.
 
 - WiFi<br>
