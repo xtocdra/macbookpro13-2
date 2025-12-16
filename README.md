@@ -72,7 +72,7 @@ Create a blacklist conf file in <i>/etc/modprobe.d</i> to ignore the default <i>
 ```
 options usbhid ignore_special_drivers=1 quirks=0x05ac:0x8600:0x4
 ```
-reboot or turn 0ff/0n, avoid any usb flash drive plugged.
+reboot or turn 0ff/0n, avoid any usb flash drive plugged in booting time.
 
 FacetimeHD is using <i>uvcvideo</i> kernel driver and it will hook to IBridge automatically.
 run <i>lsusb -t</i> and the result is as follows:
