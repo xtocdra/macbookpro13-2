@@ -1,11 +1,11 @@
-# State of Linux on the MacBook Pro late 2016 with Touch Bar (model 13,2) T1 Chip
+# The State of Linux on MacBook Pro late 2016 with Touch Bar (model 13,2) T1 Chips.
 
 - Version 1.00 as of 15 Dec 2025
 
-The following document provides an overview about Linux support for Apple's MacBook Pro late 2016 with Touch Bar and T1 chip (model 13,2).
+The following document provides an overview about Linux support for Apple's MacBook Pro late 2016 with Touch Bar and T1 Chips (model 13,2).
 
 The information below is with followings conditions:
-- Arch Linux Rolling-model Installation
+- Arch Linux rolling-model Installation (systemd)
 - Linux Kernel 6.17.9
 
 ## Current Status:
@@ -29,9 +29,10 @@ The information below is with followings conditions:
 - Touch ID
 
 ### Some Works need to be applied especially for:
+
 #### Audio Input & Output
-The in build kernel module from Arch Linux is not working properly, snd_hda_intel is loaded and hooked but there is no sound.
-The issue is lying on Cirrus 8409 kernel in build driver and it needs to be patched and replaced.
+The in build kernel module from Arch Linux is not working properly, <i>snd_hda_intel</i> is loaded and hooked but there is no sound.
+The issue is lying on Cirrus 8409 <i>snd_hda_codec_cs8409</i> in build kernel driver and it needs to be patched and replaced.
 Install the patch for Cirrus 8409 driver from https://github.com/davidjo/snd_hda_macbookpro
 
 Follow the instruction in there.
@@ -42,7 +43,7 @@ Macbook Pro late 2016 is using T1 Chip and recognized by the autodetect kernel a
 Install the kernel driver from https://github.com/parport0/mbp-t1-touchbar-driver/<br>
 There will be 3 drivers needed <i>apple-ibridge</i> (virtual usb to manage facetimehd and touch bar), <i>apple_ib_tb</i> for touch bar and <i>apple_ib_als</i> for the ambient light sensor.
 
-Follow the instruction there and make it a systemd service for <i>apple-ibridge.service</i>
+Follow the instruction and make a systemd service for <i>apple-ibridge.service</i>
 Here is an example:
 
 ```
