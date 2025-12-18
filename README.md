@@ -5,8 +5,11 @@
 The following document provides an overview about Linux support for Apple's MacBook Pro late 2016 with Touch Bar and T1 Chips (model 13,2).
 
 The information below is with followings conditions:
-- Arch Linux rolling-model Installation (systemd)
+- Dual boot MacOS and Linux
+- OCLP (Open Core Legacy Platform) is installed.
+- Arch Linux rolling-model Installation
 - Linux Kernel 6.17.9
+- Systemd boot
 
 ## Current Status:
 - Battery: Working
@@ -85,7 +88,7 @@ cat /sys/module/apple_ib_tb/parameters/dim/timeout
 # or set the parameters in the systemd service to suite your preference.
 ```
 
-If the Touch Bar is still not working, try to hook up the module to <i>mkinitcpio.conf</i>,
+If the Touch Bar is still not working, try to hook up the module in <i>mkinitcpio.conf</i>,
 ```
 # nano /etc.mkinitcpio.conf
 MODULES=(apple-ib-tb)
@@ -94,11 +97,12 @@ MODULES=(apple-ib-tb)
 options apple_ib_tb idle_timeout=-1 dim_timeout=-1
 # save and run
 sudo mkinitcpio -P
+
 # edit the systemd service (apple-ibridge.service) by deleting or uncoment this parameters:
 ExecStart=/usr/bin/modprobe apple-ib-tb idle_timeout=-1 dim_timeout=-1 fnmode=2
-
 # Then update systemd
 sudo systemctl daemon-reload
+
 reboot
 ```
 
