@@ -70,7 +70,7 @@ WantedBy=multi-user.target
 
 Enable and Start the service
 
-Create a blacklist conf file in <i>/etc/modprobe.d</i> to ignore the default <i>usbhid</i> driver to take over <i>apple-ibridge</i> and run <i>mkinitcpio -P</i> afterwards.
+Create a config file in <i>/etc/modprobe.d</i> to ignore the default <i>usbhid</i> driver to take over <i>apple-ibridge</i> and run <i>mkinitcpio -P</i> afterwards.
 ```
 options usbhid ignore_special_drivers=1 quirks=0x05ac:0x8600:0x4
 ```
@@ -88,7 +88,7 @@ cat /sys/module/apple_ib_tb/parameters/dim/timeout
 # or set the parameters in the systemd service to suite your preference.
 ```
 
-If the Touch Bar is still not working, try to hook up the module in <i>mkinitcpio.conf</i>,
+If the Touch Bar is still not working, try to insert driver in module section on <i>mkinitcpio.conf</i>,
 ```
 # nano /etc.mkinitcpio.conf
 MODULES=(apple-ib-tb)
