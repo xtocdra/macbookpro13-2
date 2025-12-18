@@ -54,9 +54,7 @@ After=multi-user.target
 [Service]
 Type=oneshot
 ##### 1. Load the driver modules
-ExecStart=/usr/bin/modprobe apple-ibridge
 ExecStart=/usr/bin/modprobe apple-ib-tb idle_timeout=-1 dim_timeout=-1 fnmode=2
-#ExecStart=/usr/bin/modprobe apple-ib-tb
 
 ##### 2. Unbind from generic usb driver and reprobe to trigger apple-ibridge binding
 ExecStart=/usr/bin/bash -c 'echo -n "1-3" > /sys/bus/usb/drivers/usb/unbind'
@@ -74,6 +72,35 @@ Create a blacklist conf file in <i>/etc/modprobe.d</i> to ignore the default <i>
 options usbhid ignore_special_drivers=1 quirks=0x05ac:0x8600:0x4
 ```
 reboot or turn 0ff/0n, avoid any usb flash drive plugged in booting time.
+
+If Touch Bar is still not working, check some parameters:
+```
+# check all the options of paramaters for the touchbar
+modinfo apple-ib-tb
+# check the recorded parameters
+cat /sys/module/apple_ib_tb/parameters/idle_timeout
+# return should be -1
+cat /sys/module/apple_ib_tb/parameters/dim/timeout
+# return should be -1
+# or set the parameters in the systemd service to suite your preference.
+```
+
+If the Touch Bar is still not working, try to hook up the module to <i>mkinitcpio.conf</i>,
+```
+# nano /etc.mkinitcpio.conf
+MODULES=(apple-ib-tb)
+# save the config file and create a config file in /etc/modprobe.d
+# nano ibridge.conf
+options apple_ib_tb idle_timeout=-1 dim_timeout=-1
+# save and run
+sudo mkinitcpio -P
+# edit the systemd service (apple-ibridge.service) by deleting or uncoment this parameters:
+ExecStart=/usr/bin/modprobe apple-ib-tb idle_timeout=-1 dim_timeout=-1 fnmode=2
+
+# Then update systemd
+sudo systemctl daemon-reload
+reboot
+```
 
 FacetimeHD is using <i>uvcvideo</i> kernel driver and it will hook to IBridge automatically.
 run <i>lsusb -t</i> and the result is as follows:
