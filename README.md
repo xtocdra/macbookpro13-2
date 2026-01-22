@@ -1,9 +1,9 @@
 # State of Linux on MacBook Pro late 2016 with Touch Bar (model 13,2) T1 Chips.
 
-- Version 1.10 as of 3 Jan 2026.<br>
+- Information updated as of 3 Jan 2026.<br>
   upgrade to Linux Kernel 6.18.3
   
-- Version 1.00 as of 15 Dec 2025
+- Started this information as of 15 Dec 2025
 
 The following document provides an overview about Linux support for Apple's MacBook Pro late 2016 with Touch Bar and T1 Chips (model 13,2).
 
