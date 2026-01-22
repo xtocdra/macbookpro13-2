@@ -27,11 +27,11 @@ The information below is with followings conditions:
 - Audio Input & Output: Working (Additional patch required)
 - FaceTimeHD Camera: Working (Additional patch required)
 - Touch Bar: Working (Additional patch required)
-- Suspend: Working (Additional setup required)
+- Sleep and Suspend: Working (Additional setup required)
 - WiFi: Working (Additional setup required)
 
 #### Not Working:
-- Sleep & Hibernation
+- Hibernation (still no time to experiment this feature)
 - Touch ID
 
 ### Some Works need to be applied especially for:
