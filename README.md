@@ -1,9 +1,13 @@
 # State of Linux on MacBook Pro late 2016 with Touch Bar (model 13,2) T1 Chips.
 
-- Information updated as of 3 Jan 2026.<br>
-  upgrade to Linux Kernel 6.18.3
+- Upgrade to Linux Kernel 6.19.xx as of 9 April 2026<br>
+  See Notes: Upgrading to 6.19.xx
   
-- Started this information as of 15 Dec 2025
+- Status as of 3 Jan 2026.<br>
+  upgrade to Linux Kernel 6.18.xx
+  
+- Started this information as of 15 Dec 2025<br>
+  Linux Kernel 6.16.xx
 
 The following document provides an overview about Linux support for Apple's MacBook Pro late 2016 with Touch Bar and T1 Chips (model 13,2).
 
@@ -33,6 +37,20 @@ The information below is with followings conditions:
 #### Not Working:
 - Hibernation (still no time to experiment this feature)
 - Touch ID
+
+### Notes: For Linux Kernel 6.19
+<i>For Users with Linux Kernel below 6.19, you can skip this section.<br>
+If you are firstimer or you are upgrading to Linux Kernel 6.19, some quirks need to be addressed.<br>
+The Linux Kernel 6.19.xx comes directly with support of T2, so there are 2 kernel moduless loaded automatically by boot process. We need to disable these 2 kernel modules by adding a configuration file on /etc/modprobe.d<br>
+You might name the conf file anything such as ibridge.conf<br>
+
+...
+blacklist apple-ibridge-hid
+blacklist apple-ib-touchbar
+...
+save it and regenerate the init file <i>mkinitcpio -P</i><br>
+You can now continue to read through this documents below.<br>
+
 
 ### Some Works need to be applied especially for:
 
