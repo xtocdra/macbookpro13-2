@@ -39,15 +39,14 @@ The information below is with followings conditions:
 - Touch ID
 
 ### Notes: For Linux Kernel 6.19
-<i>For Users with Linux Kernel below 6.19, you can skip this section.<br>
+<i>For Users with Linux Kernel below 6.19, you can skip this section.</i><br>
 If you are firstimer or you are upgrading to Linux Kernel 6.19, some quirks need to be addressed.<br>
 The Linux Kernel 6.19.xx comes directly with support of T2, so there are 2 kernel moduless loaded automatically by boot process. We need to disable these 2 kernel modules by adding a configuration file on /etc/modprobe.d<br>
 You might name the conf file anything such as ibridge.conf<br>
-
-...
+```
 blacklist apple-ibridge-hid
 blacklist apple-ib-touchbar
-...
+```
 save it and regenerate the init file <i>mkinitcpio -P</i><br>
 You can now continue to read through this documents below.<br>
 
